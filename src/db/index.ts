@@ -1,13 +1,18 @@
 import { drizzle } from "drizzle-orm/node-postgres";
 import { Client } from "pg";
 import * as schema from "./schema";
+import "dotenv/config";
+
+// const client = new Client({
+//     host: process.env.DB_HOST,
+//     port: process.env.DB_PORT ? parseInt(process.env.DB_PORT) : undefined,
+//     user: process.env.DB_USER,
+//     password: process.env.DB_PASSWORD,
+//     database: process.env.DB_NAME,
+// });
 
 const client = new Client({
-    host: "127.0.0.1",
-    port: 5432,
-    user: "postgres",
-    password: "haider",
-    database: "learning",
+    connectionString: process.env.DB_URL!!,
 });
 
 client
